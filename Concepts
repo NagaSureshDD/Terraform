@@ -1,0 +1,47 @@
+Terraform Learning DAY1
+Installed Terraform and Configured AWS into CodeSpace 
+
+DAY2:
+Let's Understand the Concepts which are Buiding Blocks of Terraform Code.Will break down concpets one by one for better Understanding.
+1. Providers:
+  Plugins that helps Terraform to Understand where it need to create the Infrastructure.If we don;t define any providers and simply execute scripts with 
+  resource blocks, what happens. 
+syntax:                                
+provider "name_of_provider"{            
+    region = "x_x_x"
+}
+Interview Questions:
+(a) How to deploy this Infra using scripts in Multiple Regions and Multiple Clouds? Mutli Region Setup and Hybrid Cloud Architecture of Terraform Concepts.
+(b) If asked to explain about Syntax of a Particular Resource in Terraform? No one will remember the exact syntax, can give a Skeleton. 
+2. Variables: 
+  Using variables in Terraform allows for easy customization of environments without modifying the main script. This practice avoids hardcoding and enables developers to adjust configurations by simply updating the variable.tf file, streamlining the process for different project requirements.2 Types of Variables
+  A. Input Variables 
+  B. Output Variables
+3. Structure for terraform Project in Companies
+  Everything can't be fit into 1 main.tf. So we can spit that into different files.
+  provider.tf, inputvariable.tf, outputvar.tf, main.tf 
+  where as when we are working for different Projects - .tfvars files (typically with a .tfvars extension) are used to set specific values for input variables defined in your Terraform configuration.
+4. Conditional Expressions:
+   In Terraform are used to define conditional logic within your configurations. They allow you to make decisions or set values based on conditions.
+syntax: condition ? true_val : false_val
+5. Modules: 
+   Need to Understand this Better 
+6. State File & Backend - Can expect atleast 1-2 questions about this in Interview.
+   Terraform State File is treated as Heart of Terraform, as it stores info about the Infrastructure that is provisioned into Cloud Provider.If there is no State file, when you want to modify/destroy the resources that you have created, terraform can't perform those actions because its not storing the info and every single time you run terraform apply,plan with modifications in script it will create all resources as whole.
+   Format: 
+   Syntax: 
+   terraform {
+    backend "remote state file Service Name. Eg:"s3"" {
+     attribute1 = value1
+     attribute2 = value2
+     attribute3 = value3
+    }
+   }
+   Locking: 
+7. Provisioners:
+   Format to provide value of any resource in another block is "value = resource.resource_name.attribute"(that need to be fetched)If you are in same resource block, can you self keyword to address any attribute value. Are also used for Local and Remote Execution. 
+   With Local Execution - Will write down the output to some local file 
+   Remote Execution 
+8. Terraform Workspaces:
+9. Terraform Cloud and Vault:
+   
